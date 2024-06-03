@@ -2,8 +2,8 @@ package functions
 
 import (
 	"math"
-	"testing"
 	"reflect"
+	"testing"
 )
 
 func TestMedian(t *testing.T) {
@@ -15,4 +15,3 @@ func TestMedian(t *testing.T) {
 		t.Errorf("Test Medial Failed Expected : %v. Got : %v .", expected, result)
 	}
 }
-
