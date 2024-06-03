@@ -2,11 +2,11 @@ package functions
 
 import (
 	"math"
-	"testing"
 	"reflect"
+	"testing"
 )
 
-func TestVariance(t *testing.T){
+func TestVariance(t *testing.T) {
 	input := []float64{1, 2, 3, 4, 5, 6, 7, 8, 9}
 	expected := float64(7)
 
