@@ -3,40 +3,50 @@
 
 This project- math-skills is designed to calculate and print the average, median, variance, and standard deviation of a statistical population of data from a file. The data in the file is presented as a list of numbers, one per line.
 
-## Usage
-To run the program, use the following command:
+This program reads the file specified in the command line, then calculates the average, median, variance and standard deviation of the data in the file then finaly prints out the results as an output.
 
-bash
-go run main.go <data_file>
+## Features
+- statistical calculations are performed using appropriate functions. 
+* The data represents statistical population.
+* The values are rounded integers
+* only integers are allowed
+- Error handling is implemented to handle invalid data or file reading errors.
+* This program takes any file with numeric values as long as its considered in the scope
+* It only considers integers above intfloat64
 
-Replace <data_file> with the path to the file containing the data.
-
-Fuctions
-Average
+## Fuctions
+- Average
 The average is calculated by summing all the values and dividing by the total number of values.
-Median
+- Median
 The median is the middle value of the sorted list of numbers. If the list has an even number of values, the median is the average of the two middle values.
-Variance
+- Variance
 The variance is the average of the squared differences from the mean.
-Standard Deviation
+- Standard Deviation
 The standard deviation is the square root of the variance.
+
 Output
-The program prints the results of each calculation in the following format:
-
-text
-Average: <average_value>
-Median: <median_value>
-Variance: <variance_value>
-Standard Deviation: <standard_deviation_value>
-
+After reading the file, the program will execute each of the calculations asked and print the results in the following manner:
 Example Output
 
-text
-Average: 35
-Median: 4
-Variance: 5
-Standard Deviation: 65
+Average: 3
+Median: 3
+Variance: 1
+Standard Deviation: 1
 
-Language
-This project is written in Go.
+ ## Dependencies 
+ * The progrm is written in Go language
+ - The program relies on the Go standard library and potentially any additional libraries or packages imported within the Go program
+
+
+## Usage
+
+1. To run this program run this command.
+```bash
+go run . data.txt
+```
+2.To test the program run this command
+```bash
+go test -v
+``` 
+## Author   [aokingo](https://learn.zone01kisumu.ke/git/aokingo).
 
