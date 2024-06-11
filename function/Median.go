@@ -2,13 +2,13 @@ package functions
 
 import "sort"
 
-func Median(number []float64) float64 {
-	sort.Float64s(number)
+func Median(num []float64) float64 {
+	sort.Float64s(num)
 
-	length := len(number)
+	length := len(num)
 	if length%2 == 0 {
-		return (number[length/2-1] + number[length/2]) / 2
+		return (num[length/2-1] + num[length/2]) / 2
 	} else {
-		return number[length/2]
+		return num[length/2]
 	}
 }
