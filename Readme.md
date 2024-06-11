@@ -42,9 +42,22 @@ Standard Deviation: 1
 
 1. To run this program run this command.
 ```bash
+git clone https://learn.zone01kisumu.ke/git/aokingo/math-skills.git
+```
+2. 
+```bash
+cd math-skills
+```
+3. 
+```bash
+code. 
+```
+4. 
+```bash
 go run . data.txt
 ```
-2.To test the program run this command
+
+To test the program run this command
 ```bash
 go test -v
 ``` 
