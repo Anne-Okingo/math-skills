@@ -2,8 +2,8 @@ package functions
 
 import "math"
 
-func StandardDev(nb []float64) float64 {
-	variance := Variance(nb)
+func StandardDev(number []float64) float64 {
+	variance := Variance(number)
 
 	return math.Sqrt(variance)
 }
