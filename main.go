@@ -36,7 +36,7 @@ func main() {
 		// reading the opened file
 		scanner := bufio.NewScanner(file)
 
-		values := []float64{}
+		value := []float64{}
 		for scanner.Scan() {
 			line := scanner.Text()
 			line = strings.TrimSpace(line)
@@ -50,18 +50,18 @@ func main() {
 				fmt.Println("Error in conversion", err)
 				os.Exit(0)
 			}
-			values = append(values, data)
+			value = append(value, data)
 		}
 
-		if len(values) == 0 {
+		if len(value) == 0 {
 			fmt.Println("Empty File")
 			return
 		}
 
-		result1 := functions.Average(values)
-		result2 := functions.Median(values)
-		result3 := functions.Variance(values)
-		result4 := functions.StandardDev(values)
+		result1 := functions.Average(value)
+		result2 := functions.Median(value)
+		result3 := functions.Variance(value)
+		result4 := functions.StandardDev(value)
 
 		fmt.Printf("Average : %.0f\n", math.Round(result1))
 		fmt.Printf("Median : %.0f\n", math.Round(result2))
