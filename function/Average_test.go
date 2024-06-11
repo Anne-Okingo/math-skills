@@ -16,3 +16,4 @@ func TestAverage(t *testing.T) {
 		t.Errorf("Test Average Failed Expected : %v, Got %v ", expected, result)
 	}
 }
+
