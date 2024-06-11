@@ -1,7 +1,9 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"math"
 	"mathskills/function"
 	"os"
 	"strconv"
@@ -11,49 +13,64 @@ import (
 func main() {
 	args := os.Args
 
-	// A condition to ensure the program only takes 2 arguments
+	// Ensuring the program only takes two arguments
 	if len(args) != 2 {
 		fmt.Println("usage : go run . <datafile.txt>")
-		return
+		os.Exit(0)
 	}
 
-	filename := args[1]
-
-	filecontent, err := os.ReadFile(filename)
-	if err != nil {
-		fmt.Println("Error reading file", err)
-	}
-	// checking if the file containing data is empty
-	if len(filecontent) == 0 {
-		fmt.Println("empty file")
-		return
-	}
-
-	contentsplit := strings.Split(string(filecontent), "\n")
-
-	values := []float64{}
-	// checking if there are empty spaces/ unfilled data among the data set, if there is they are ignored
-	for _, ch := range contentsplit {
-		ch = strings.TrimSpace(ch)
-		if ch == "" {
-			continue
-		}
-		// converting each character(data) into float64
-		dataset, err := strconv.ParseFloat(ch, 64)
+	dataFile := args[1]
+	Suffix := ".txt"
+	// checking for onlt .txt file as dataFile
+	if !strings.HasSuffix(dataFile, Suffix) {
+		fmt.Println("Error datafile should be <.txt>\n\nusage : go run . <datafile.txt>")
+		os.Exit(0)
+	} else {
+		// Open the file for reading
+		file, err := os.Open("data.txt")
 		if err != nil {
-			fmt.Println("Error in conversion", err)
+			fmt.Println("Error:", err)
 			return
 		}
-		values = append(values, dataset)
+		defer file.Close()
+		// reading the opened file
+		scanner := bufio.NewScanner(file)
+
+		values := []float64{}
+		for scanner.Scan() {
+			line := scanner.Text()
+			line = strings.TrimSpace(line)
+
+			if line == "" {
+				continue
+			}
+
+			data, err := strconv.ParseFloat(line, 64)
+			if err != nil {
+				fmt.Println("Error in conversion", err)
+				os.Exit(0)
+			}
+			values = append(values, data)
+		}
+
+		if len(values) == 0 {
+			fmt.Println("Empty File")
+			return
+		}
+
+		result1 := functions.Average(values)
+		result2 := functions.Median(values)
+		result3 := functions.Variance(values)
+		result4 := functions.StandardDev(values)
+
+		fmt.Printf("Average : %.0f\n", math.Round(result1))
+		fmt.Printf("Median : %.0f\n", math.Round(result2))
+		fmt.Printf("Variance : %.0f\n", math.Round(result3))
+		fmt.Printf("Standard Deviation : %.0f\n", math.Round(result4))
+
+		// Check for scanner errors
+		if err := scanner.Err(); err != nil {
+			fmt.Println("Error:", err)
+		}
 	}
-
-	result1 := functions.Average(values)
-	result2 := functions.Median(values)
-	result3 := functions.Variance(values)
-	result4 := functions.StandardDev(values)
-
-	fmt.Printf("Average : %.0f\n", result1)
-	fmt.Printf("Median : %.0f\n", result2)
-	fmt.Printf("Variance : %.0f\n", result3)
-	fmt.Printf("Standard Deviation : %.0f\n", result4)
 }
